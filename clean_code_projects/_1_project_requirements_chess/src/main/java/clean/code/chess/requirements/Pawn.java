@@ -9,9 +9,11 @@ public class Pawn {
 
     public Pawn(PieceColor pieceColor) {
         this.pieceColor = pieceColor;
+        this.xCoordinate = -1;
+        this.yCoordinate = -1;
     }
 
-    public ChessBoard getChesssBoard() {
+    public ChessBoard getChessBoard() {
         return chessBoard;
     }
 
@@ -43,9 +45,29 @@ public class Pawn {
         pieceColor = value;
     }
 
-    public void Move(MovementType movementType, int newX, int newY) {
-        throw new UnsupportedOperationException("Need to implement Pawn.Move()");
+    public void move(MovementType movementType, int newX, int newY) {
+        if (movementType == MovementType.MOVE) {
+            doMove(newX, newY);
+        } else if (movementType == MovementType.CAPTURE) {
+            doCapture(newX, newY);
+        }
     }
+
+    private void doMove(int newX, int newY) {
+        if (newX != xCoordinate) {
+            return ;
+        }
+
+        if ((pieceColor == PieceColor.BLACK && newY == yCoordinate - 1)
+         || (pieceColor == PieceColor.WHITE && newY == yCoordinate + 1)) {
+            yCoordinate = newY;
+        }
+    }
+
+    private void doCapture(int newX, int newY) {
+        // TODO
+    }
+
 
     @Override
     public String toString() {
