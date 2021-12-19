@@ -61,7 +61,7 @@ public class ChessBoardTest extends TestCase {
     }
 
     @Test
-    public void avoids_Duplicate_Positioning() {
+    public void testAvoids_Duplicate_Positioning() {
         Pawn firstPawn = new Pawn(PieceColor.BLACK);
         Pawn secondPawn = new Pawn(PieceColor.BLACK);
         testSubject.add(firstPawn, 6, 3);
